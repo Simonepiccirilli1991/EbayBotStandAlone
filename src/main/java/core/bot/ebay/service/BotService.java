@@ -26,6 +26,7 @@ public class BotService implements ApplicationRunner {
         String authorization = ebayAuthWebClient.getAuthorization();
 
         var possibleItems = ebaySearchWebClient.searchItem("iphone", authorization);
+        //TODO: filtrare i risultati  e mandare poi per mail
 
     }
 }
