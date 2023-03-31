@@ -1,0 +1,12 @@
+#No auth  protected
+endpoints:
+ shutdown.sensitive: false
+#Enable shutdown endpoint
+ shutdown.enabled: true
+
+spring:
+ mail:
+  host: smtp.gmail.com
+  port: 587
+  username: testmail@gmail.com #fake mail u should insert ur mail
+  password: kipmllxtspgycksr #fake psw u should insert ur psw
