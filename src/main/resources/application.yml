@@ -10,3 +10,8 @@ spring:
   port: 587
   username: testmail@gmail.com #fake mail u should insert ur mail
   password: kipmllxtspgycksr #fake psw u should insert ur psw
+
+config:
+     mail: ajeje@brazof.com #fake mail u should insert ur mail u want to receive the mail
+     ebay-endpoint-core: ${Ebay_ENDPOINT:https://api.ebay.com/}
+     ebay-search: ${Ebay_search:buy/browse/v1/item_summary/search?q={value}}
