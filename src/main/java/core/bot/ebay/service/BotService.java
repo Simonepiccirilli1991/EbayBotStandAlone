@@ -5,13 +5,16 @@ import core.bot.ebay.client.EbaySearchWebClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BotService implements ApplicationRunner {
+@EnableScheduling
+public class BotService {
 
     //NOTE: implementatiamo applicationRUnner in modo da poter usare il metodo run che fa partire il service senza bisogno di invocarlo
     @Autowired
@@ -22,12 +25,13 @@ public class BotService implements ApplicationRunner {
     ConfigurableApplicationContext applicationContext;
 
     private Boolean isRunning = true;
-    //Note: settiamo la schedulatura per il metodo run in modo che runni fisso ogni tot minuti
-    @Override
+    //schedulatura per il metodo run in modo che runni fisso ogni tot minuti
+
     @Scheduled(fixedDelay = 10000)
-    public void run(ApplicationArguments args) throws Exception {
+    public void run() throws Exception {
 
         if(!isRunning){
+            System.out.println("stop");
             applicationContext.close();
         }
 
@@ -38,7 +42,8 @@ public class BotService implements ApplicationRunner {
 
     }
 
-    public void stop(){
+    public void stop() throws Exception {
         isRunning = false;
     }
+
 }
