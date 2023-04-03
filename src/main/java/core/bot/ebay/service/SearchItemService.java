@@ -59,7 +59,8 @@ public class SearchItemService {
         for(var itemPresent : itemAlreadyPresent){
             //lambda che mi rimuove l'oggetto dalla lista di ebay
            var toRemove = ebayResp.getItemSummaries().stream().filter(item -> item.getItemId().equals(itemPresent)).findAny();
-            ebayResp.getItemSummaries().remove(toRemove.get());
+            if(toRemove.isPresent())
+                ebayResp.getItemSummaries().remove(toRemove.get());
 
         }
         // aggiungo gli oggetti rimasti alla response
