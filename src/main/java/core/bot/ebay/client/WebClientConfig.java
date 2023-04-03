@@ -22,7 +22,9 @@ public class WebClientConfig {
                                 .addHandlerLast(new WriteTimeoutHandler(2)));
 
         return webClientBuilder
-                .defaultHeader(HttpHeaders.USER_AGENT, "SAMPLE_APP")
+                // scommentare poi in base a cosa serve
+                // .baseUrl("https://api.ebay.com")
+                //.defaultHeader(HttpHeaders.USER_AGENT, "SAMPLE_APP")
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .build();
     }
