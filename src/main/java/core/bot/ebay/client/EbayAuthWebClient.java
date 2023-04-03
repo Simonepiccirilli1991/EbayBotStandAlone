@@ -1,6 +1,7 @@
 package core.bot.ebay.client;
 
 import core.bot.ebay.model.EbayAuthResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -10,7 +11,8 @@ import java.util.Base64;
 @Component
 public class EbayAuthWebClient {
 
-    WebClient webClient = WebClient.create("https://api.ebay.com/identity/v1/oauth2/token");
+    @Autowired
+    WebClient webClient;
 
     private String clientId = "XXXXX";
     private String clientSecret = "XXXXX";
@@ -19,6 +21,7 @@ public class EbayAuthWebClient {
         String auth = encodeCredentials(clientId, clientSecret);
 
         var response = webClient.post()
+                .uri("https://api.ebay.com/identity/v1/oauth2/token")
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .header("Authorization", "Basic " + auth)
                 .retrieve()
