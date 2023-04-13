@@ -25,10 +25,11 @@ public class FilterItemService {
             return response;
         }
 
+        // filtro gli oggetti che hanno la condizione "New", provenienti dall'italia e con un prezzo <= a 60 euro
         var filteredItem = items.stream()
                 .filter(item -> item.getCondition().equals("New"))
                 .filter(item -> item.getItemLocation().getCountry().equals("ITALY"))
-                .filter(item -> Double.parseDouble(item.getPrice().getValue()) < 60)
+                .filter(item -> Double.parseDouble(item.getPrice().getValue()) <= 60)
                 .toList();
 
         response.addAll(filteredItem);

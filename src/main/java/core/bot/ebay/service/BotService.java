@@ -41,7 +41,7 @@ public class BotService {
         // prima controllo se il bot e gia in esecuzione per stoppare
         if(!isRunning){
             logger.info("is runnig has been setted to false, bot is stopping");
-            System.out.println("stopping boot");
+            System.out.println("stopping bot");
             applicationContext.close();
         }
         // controllo se ho bisogno di fare una nuova richiesta di autorizzazione, dura 2 ore, faccio una richiesta ogni 115 minuti
